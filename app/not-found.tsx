@@ -1,20 +1,14 @@
 import { Metadata } from "next"
 import Link from 'next/link';
 
-// type Props = {
-//   params: Promise<{ id: string }>
-// }
-
 export const metadata: Metadata = {
-//  ({params}: Props)
-   title: "404-Not Found",
-  description: "Page not found",
-
+   title: '404-Not Found',
+  description: 'Page not found',
+  
   openGraph: {
     title: '404-Not Found',
     description: "Page not found",
-    // url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
-    // 'http://localhost:3000/',
+    url: 'https://08-zustand-steel-chi.vercel.app/',
     images: [
         {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

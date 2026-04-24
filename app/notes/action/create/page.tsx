@@ -5,11 +5,12 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title:"Create new note",
   description: "Write your note and save",
-  // url:'',
+      // url: `https://08-zustand-steel-chi.vercel.app/create`,
+
 openGraph: {
     title: "Create new note",
     description: "Write your note and save",
-    // url: '',
+    url: 'https://08-zustand-steel-chi.vercel.app/action/create',
      images: [
         {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

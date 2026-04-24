@@ -13,13 +13,13 @@ export async function generateMetadata({ params }:NotesPageProps):Promise<Metada
   const formattedTag = tag === 'all' ? 'all' : tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
 
   return{
-  title: `Note: ${tag}`,
-  description: `Tag note: ${tag}`,
+  title: `Note: ${formattedTag}`,
+  description: `Tag note: ${formattedTag}`,
 
   openGraph:{
     title: `Note: ${formattedTag}`,
-    description: `Tag note: ${tag}`,
-    // url: 'http://localhost:3000/notes/filter/${formattedTag}',
+    description: `Tag note: ${formattedTag}`,
+    url: `https://08-zustand-steel-chi.vercel.app/${formattedTag}`,
     images: [
       {
            url: 'https://ac.goit.global/fullstack/react/og-meta.jpg',

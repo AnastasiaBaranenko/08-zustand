@@ -18,7 +18,8 @@ return{
   openGraph:{
    title: `Note ${note.title}`,
    description:`Note detail: ${note.content}`,
-  //  url: `http://localhost:3000/notes/[id]/${id}`,
+      url: `https://08-zustand-steel-chi.vercel.app/${id}`,
+
     images: [
         {
           url: 'https://ac.goit.global/fullstack/react/og-meta.jpg',
