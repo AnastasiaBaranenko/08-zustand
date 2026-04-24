@@ -16,7 +16,7 @@ const response = await axios.get<Notes>(`${url}/notes`, {
     params: {
         search: search,
         page: page,
-        tag:tag,
+        tag:tag ,
 },
 headers: {
 Authorization: `Bearer ${key}`,
