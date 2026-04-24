@@ -12,7 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Link from 'next/link';
 
 export interface NotesClientProps{
-    tag: string;
+    tag?: string;
 }
 
 export default function NotesClient({tag}: NotesClientProps){

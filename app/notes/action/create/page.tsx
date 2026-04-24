@@ -5,7 +5,6 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title:"Create new note",
   description: "Write your note and save",
-      // url: `https://08-zustand-steel-chi.vercel.app/create`,
 
 openGraph: {
     title: "Create new note",
