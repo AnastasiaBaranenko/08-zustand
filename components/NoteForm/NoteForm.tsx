@@ -2,7 +2,6 @@
 
 import css from './NoteForm.module.css';
 import { useRouter } from 'next/navigation';
-// import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import { useMutation } from '@tanstack/react-query';
@@ -38,6 +37,15 @@ export default function NoteForm(){
   const queryClient = useQueryClient();
     const { draft, setDraft, clearDraft } = useNoteStore();
     
+  const mutation =  useMutation<Note, Error, NoteValues>({
+  mutationFn: (noteData) => createNote(noteData),
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['notes'] });
+    clearDraft();
+     router.push('/notes/filter/all');
+  },
+})
+
   const handleChange = (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -49,26 +57,19 @@ setDraft({
       [name]: value,
     });
   };
-  
-  const mutation =  useMutation<Note, Error, NoteValues>({
-  mutationFn: (noteData) => createNote(noteData),
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['notes'] });
-    clearDraft();
-     router.push('/notes/filter/all');
-  },
-})
 
-  const handleSubmit = async () => {
+  const handleAction = async(FormData : FormData) => {
+  const clearData = {
+      title: FormData.get('title') as string,
+      content: FormData.get('content') as string,
+      tag: FormData.get('tag') as string,
+    };
+
     try{
       setErrors({});
-    await Shema.validate(draft, { abortEarly: false })
-    const cleanData: NoteValues = {
-      title: draft.title,
-      content: draft.content,
-      tag: draft.tag,
-    };
-  mutation.mutate(cleanData);
+    await Shema.validate(clearData, { abortEarly: false })
+  
+  mutation.mutate(clearData);
     } catch(error){
       if (error instanceof Yup.ValidationError) {
         const newErrors: Record<string, string> = {};
@@ -82,7 +83,7 @@ setDraft({
 
 const handleCancel = () => router.push('/notes/filter/all');
     return(
-       <form action={handleSubmit} >
+       <form action={handleAction} >
         <div className={css.formGroup}>
     <label  htmlFor={`${fieldId}-title`}>Title</label>
   
